@@ -5,6 +5,7 @@
 *.ear
 *.jar
 
+
 #kdiff3 ignore
 *.orig
 
@@ -31,6 +32,7 @@ target/
 *.tmp
 
 *.pdf
+.zip
 
 #system ignore
 .DS_Store
