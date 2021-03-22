@@ -20,16 +20,16 @@
 
 #### 效果图
 
-![](sample.png)
-
-![](sample0.png)
-
-![](sample1.png)
-
-![](sample2.png)
-
-![](sample3.png)
-
-![](sample4.png)
-
-![](sample5.png)
+![](img/sample.png)
+	img/
+![](img/sample0.png)
+	img/
+![](img/sample1.png)
+	img/
+![](img/sample2.png)
+	img/
+![](img/sample3.png)
+	img/
+![](img/sample4.png)
+	img/
+![](img/sample5.png)
