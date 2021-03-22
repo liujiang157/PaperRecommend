@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>论文推荐网站管理端</title>
+    <meta name="description"
+          content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="js/jPlayer/jplayer.flat.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="js/chosen/chosen.css" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
+    <![endif]-->
+</head>
+
+<body class="">
+<section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+        <div class="navbar-header aside bg-info nav-xs">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="icon-list"></i>
+            </a>
+            <a th:href="@{/admin}" class="navbar-brand text-lt">
+                <i class="icon-earphones"></i>
+                <img src="images/logo.png" alt="." class="hide">
+                <span class="hidden-nav-xs m-l-sm">Paper</span>
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                <i class="icon-settings"></i>
+            </a>
+        </div>
+        <ul class="nav navbar-nav hidden-xs">
+            <li>
+                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                    <i class="fa fa-indent text"></i>
+                    <i class="fa fa-dedent text-active"></i>
+                </a>
+            </li>
+        </ul>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <!-- .aside -->
+            <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                             data-size="10px" data-railOpacity="0.2">
+
+
+                            <!-- nav -->
+                            <nav class="nav-primary hidden-xs">
+
+                                <ul class="nav" data-ride="collapse">
+                                    <li>
+                                        <a href="#" class="auto">
+                        <span class="pull-right text-muted">
+                          <i class="fa fa-angle-left text"></i>
+                          <i class="fa fa-angle-down text-active"></i>
+                        </span>
+                                            <i class="icon-chemistry icon">
+                                            </i>
+                                            <span>管理中心</span>
+                                        </a>
+                                        <ul class="nav dk text-sm">
+                                            <li>
+                                                <a th:href="@{/userlist}" class="auto">
+                                                    <i class="fa fa-angle-right text-xs"></i>
+
+                                                    <span>用户管理</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/songlist}" class="auto">
+                                                    <i class="fa fa-angle-right text-xs"></i>
+
+                                                    <span>论文管理</span>
+                                                </a>
+                                            </li>
+
+
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- / nav -->
+
+                        </div>
+                    </section>
+
+                    <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                    </footer>
+                </section>
+            </aside>
+            <!-- /.aside -->
+            <section id="content">
+                <section class="vbox">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form data-validate="parsley" id="addpaperId" enctype="multipart/form-data" method="post">
+                            <section class="panel panel-default">
+                                <header class="panel-heading">
+                                    <span class="h4">上传视频</span>
+                                </header>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">视频名称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="songname" class="form-control rounded">
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">上传论文</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" id="filevideo" name="video" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s">
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">视频描述</label>
+                                        <textarea id="editor" name="description" class="form-control" style="height:150px;max-height:150px">Go ahead...</textarea>
+                                    </div>
+
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                    <footer class="panel-footer text-right bg-light lter">
+                                        <button type="submit" class="btn btn-success btn-s-xs">Submit</button>
+                                    </footer>
+
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                   data-target="#nav,html"></a>
+            </section>
+        </section>
+    </section>
+</section>
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.js"></script>
+<!-- App -->
+<script src="js/app.js"></script>
+<script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/app.plugin.js"></script>
+<script src="js/file-input/bootstrap-filestyle.min.js"></script>
+<!-- wysiwyg -->
+<script src="js/chosen/chosen.jquery.min.js"></script>
+<script>
+    $(function() {
+        //处理上传
+        var maxSongSize = 1024 * 1024 * 30;//文件最大30M
+        var songFormat = ["mp4"];
+        $("#addpaperId").submit(function () {
+            var video = $('#filevideo').get(0).files[0];
+            //判定格式
+            if (video == null) {
+            } else if (video.size > maxSongSize) {
+                alert('超出文件最大限制');
+                return false;
+            } else if (songFormat.indexOf(video.name.substr(video.name.lastIndexOf(".") + 1)) === -1) {
+                alert('视频文件格式不对');
+                return false;
+            }
+            //提交
+            url = "addvedio.do";
+            var data = new FormData(document.getElementById("addpaperId"));
+            console.log(data)
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    var res = JSON.parse(data);
+                    if (res.status == 200) {
+                        alert('添加MV成功');
+                        window.location.href="/videolist"
+                    } else {
+                        alert('添加MV失败');
+                    }
+                }
+            });
+            return false;
+        });
+    });//处理上传 End
+</script>
+</body>
+</html>

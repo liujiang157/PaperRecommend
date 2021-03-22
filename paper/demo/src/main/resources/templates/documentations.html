@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+     <link rel="icon" href="img/basic/favicon.ico" type="image/x-icon">
+    <script src="js/jquery-3.6.0.js"></script>
+    <title>Paper</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+<main class="page">
+    <!-- Header -->
+<nav class="mainnav navbar navbar-default justify-content-between">
+    <div class="container relative">
+        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+           aria-expanded="false" aria-label="Toggle navigation">
+            <i></i>
+        </a>
+        <a class="navbar-brand" th:href="@{/index}">
+            <img class="d-inline-block align-top" alt="" src="img/basic/logo.png">
+        </a>
+        <div class="paper_menu">
+            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+    <ul class="dl-menu align-items-center">
+        <li><a th:href="@{/index}">Home</a></li>
+                        <li><a th:href="@{/paper}">Recommend</a></li>
+
+
+        <li><a th:href="@{/login}">
+            Login
+        </a>
+        </li>
+        <li><a th:href="@{/register}" class="btn btn-default nav-btn">Sign
+            Up</a>
+        </li>
+    </ul>
+</div>
+<!-- Login modal -->
+        </div>
+    </div>
+</nav>
+    <div class="search-section">
+        <div class="container">
+            <h1>Documentations
+                <small>version: 1.0</small>
+            </h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <aside class="main-sidebar ">
+                    <div class="">
+                        <section class="sidebar p-t-b-40">
+
+                            <ul class="sidebar-menu scroll">
+                                <li>
+                                    <a th:href="@{/#introduction">
+                                        <i class="icon icon-smiling-face"></i> <span>Introduction</span>
+                                    </a>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="icon icon-folders"></i>
+                                        <span>Files & Folders</span>
+                                        <span class="badge badge-primary pull-right">4</span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a th:href="@{/#structure"><i class="icon icon-circle-o"></i> Directory Structure</a>
+                                        </li>
+                                        <li><a th:href="@{/#partials"><i class="icon icon-folder5"></i>Partials</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a th:href="@{/#installation">
+                                        <i class="icon icon-clipboard-list"></i> <span>Installation</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/#production">
+                                        <i class="icon icon-clipboard-list"></i> <span>Build Production Version</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/#main_menu">
+                                        <i class="icon icon-clipboard-list"></i> <span>Main Navigation Bar</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="header">LABELS</li>
+                                <li><a href="#"><i class="icon icon-circle-o text-red"></i> <span>Important</span></a>
+                                </li>
+                                <li><a href="#"><i class="icon icon-circle-o text-yellow"></i> <span>Warning</span></a>
+                                </li>
+                                <li><a href="#"><i class="icon icon-circle-o text-aqua"></i>
+                                    <span>Information</span></a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                    <!-- /.sidebar -->
+                </aside>
+            </div>
+            <article class="col-md-9 p-b-40 b-l p-40">
+                <section id="introduction">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><i class="icon icon-smiling-face"></i> Introduction</h4>
+                            <hr>
+                            <p>
+                                Thank you for purchasing this template. We covered almost everything in this document that
+                                how easily you can setup. If you have any questions that
+                                are beyond the scope of this help file, please feel free to contact us..
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="structure" class="">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><i class="icon icon-folders"></i> Directory Structure</h4>
+                            <hr>
+                            <p>Download and extract zip files. You will find basic development structure like this.</p>
+                            <blockquote>
+                                <ul>
+                                    <li>
+                                        <i class="icon icon-folder5"></i> app
+                                        <ul>
+                                            <li>
+                                                <p><i class="icon icon-folder5"></i>src</p>
+                                                <ul>
+                                                    <li>
+                                                        <p><i class="icon icon-folder5"></i>assets</p>
+                                                        <p><i class="icon icon-folder5"></i>partials</p>
+                                                        <p><i class="icon icon-document-code"></i>*.*_files.html</p>
+                                                    </li>
+                                                </ul>
+                                                <p><i class="icon icon-document-code"></i>gulpfile.js</p>
+                                                <p><i class="icon icon-document-code"></i>package.json</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                            </div>
+                        </div>
+                    </div>
+                    <section id="partials">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3><i class="icon icon-folder5"></i> Partials</h3>
+                                <hr>
+                                <p>
+                                    Paper Knowlegebase is using partials folder to inject some common html files like header and
+                                    footer.
+                                </p>
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row"><code>_head.html</code></th>
+                                        <td>Basic HTML meta tags and everything that could be in <code>&lt;head&gt;&lt;/head&gt;</code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><code>_foot.html</code></th>
+                                        <td>Body & wrapper close</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><code>_header.html</code></th>
+                                        <td>Main Navigation or menu</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><code>_header.html</code></th>
+                                        <td>Responsible for site pre header</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><code>_footer.html</code></th>
+                                        <td>Footer of your site.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><code>_script.html</code></th>
+                                        <td>Responsible for all site scripts</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <div id="installation">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><i class="icon icon-clipboard-list"></i> Installation</h4>
+                            <hr>
+                            <p>You may need following things to get started. Please download and install
+                                dependencies</p>
+                            <ul class="arrow-list">
+                                <li><p>To install Paper Knowlegebase please make sure you have installed node and gulp.
+                                    <a th:href="@{/https://nodejs.org/en/download/">Download Node</a>
+                                </p></li>
+                                <li>
+                                    <p>
+                                        You can use any software of your choice to edit HTML files or use
+                                        <a th:href="@{/https://code.visualstudio.com/">Download VS Code</a>
+                                    </p>
+                                </li>
+                            </ul>
+                            <h3>Installing gulp 4 globally</h3>
+                            <p>You will need to remove your current gulp global package before installing v4 in order to
+                                do an upgrade.</p>
+                            <div class="alert alert-info">
+                                <p><em><strong>Note:</strong> The <code>$</code> shows the command is to be run on the
+                                    command line and shouldn’t be typed</em></p>
+                            </div>
+                            <pre class=" language-bash"><code class=" language-bash">$ npm <span class="token function">rm</span> -g gulp
+$ npm <span class="token function">install</span> -g gulp-cli</code></pre>
+                            <p>This command removes your current global package and installs v4 from the gulp-cli 4.0
+                                branch.</p>
+                            <p>Make sure you don't get any errors from the first command before you type the second.
+                                Depending on your set-up, you may need to run them with <code>sudo</code>.</p>
+                            <p>To verify what version you have installed globally, you can run the below command (and
+                                should see a similar output)</p>
+                            <pre class="“” language-git"><code class=" language-git">$ gulp -v
+CLI version 1.2.1</code></pre>
+
+                            <p>Its time to open Paper Knowlegebase HTML app folder to your favourite editor. Its easy to use an
+                                editor which have terminal. Like VS Code or PhpStrom</p>
+                            <p>First of all install all node modules by using this command:</p>
+                            <pre><code>$ npm install</code></pre>
+                            <br>
+                            <p>After all node modules installation completed run</p>
+                            <pre><code>gulp watch</code></pre>
+                            <p>gulp watch will create a temporary folder with name of <em>tmp</em></p>
+                            <div class="alert alert-info">
+                                <p><i class="icon icon-info-circle s-24"></i></p>
+                                only change content in <em>src</em> folder tmp folder is just for preview.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="production">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><i class="icon icon-clipboard-list"></i> Production Version</h4>
+                            <hr>
+                            <p>After all changes you need to create production version of your product</p>
+                            <pre><code>$ gulp production</code></pre>
+                            <br>
+                            <h4>Creating Minified Version</h4>
+                            <p> If you want a minified version then run</p>
+                            <pre><code>$ gulp production-min</code></pre>
+                            <p>Above command will create a new folder "dist" it will be fully optimized. It will
+                                compress and minify all of your html, css and js files. You can copy folder to your ftp
+                                or framework to use it.</p>
+                            <h4><i class="icon icon-upload"></i> Easy Deploy</h4>
+                            <hr>
+                            <p>
+                                If you are using version 1.5 or later you can use easy deploy option to upload all files
+                                to your ftp server with just one commnand.
+                            </p>
+                            <p>
+                                Please make sure to run gulp watch first and make changes before you do this and you
+                                have to add your server details to upload file. Please open ftp.config and add your
+                                server details.
+                            </p>
+                            <pre><code>$ gulp deploy</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div id="main_menu">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><i class="icon icon-align-justify"></i> Main Navigation Bar</h4>
+                            <hr>
+                            <p>
+                                You don't have to create extra HTML for responsive menu Paper Knowlegebase convert it for your.
+                            </p>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Navigation Wrapper</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        Navigation wrapper is useful and provide different variations. Helper classes
+                                        are given below.
+                                    </p>
+                                    <pre><code>&lt;div class="nav-absolute nav-border nav-light"&gt;
+&nbsp;&nbsp;&lt;nav&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- nav block --&gt;
+&nbsp;&nbsp;&lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+                                    <table class="table table-bordered table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row"><code>nav-absolute</code></th>
+                                            <td>To make nav absolutes use full for hero / image sections</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><code>nav-border</code></th>
+                                            <td>To add bottom border</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><code>nav-sticky</code></th>
+                                            <td>Navigation Fixed on Scroll</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><code>nav-light</code></th>
+                                            <td>Navigation parent links color white</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <h3>Attributes</h3>
+                                    <table class="table table-bordered table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row"><code>data-nav-sticky-classes</code></th>
+                                            <td>Add class when Menu sticky. for example <code>black</code></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><code>data-nav-sticky-logo</code></th>
+                                            <td> change logo when sticky</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>Example</p>
+                                    <pre><code>&lt;div class="nav-absolute nav-sticky"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data-nav-sticky-classes="black"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data-nav-sticky-logo='img/basic/logo-white.png'&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;nav&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- your code here--&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                            </div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Nav Block</h3>
+                                </div>
+                                <div class="panel-body">
+
+              <pre><code>&lt;nav class="mainnav navbar navbar-default"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="container"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="dl-menu" class="xv-menuwrapper responsive-menu"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Add nav links here--&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+                                    <h3>Menu Links</h3>
+                                    <pre><code>&lt;ul class="dl-menu"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class="parent megamenu"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="lg-submenu"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&gt;Column 1 Heading&lt;/a&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="lg-submenu"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Column 1 Link&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Column 1 Link&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&gt;Column 2 Heading&lt;/a&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="lg-submenu"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Column 2 Link&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Column 2 Link&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                                    <table class="table table-bordered table-striped">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row"><code>parent</code></th>
+                                            <td>To make an item parent</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><code>megamenu</code></th>
+                                            <td>To make drop down menu a mega menu</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><code>lg-submenu-left</code></th>
+                                            <td>To change megun menu drop down position. Only works for first level</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="scroll">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Sticky Item</h4>
+                            <hr>
+                            <p> To make an item sticky add sticky class</p>
+                            <pre><code>&lt;div class="sticky"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores dolor ea exercitationem hic ipsam iusto maiores natus nulla numquam perspiciatis quasi quis recusandae, reiciendis rerum similique ut.
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div id="contact">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Contact Form</h4>
+                            <hr>
+                            <p>Please make sure you have change email in contact form for this you need to edit
+                                "php/submit.php" add your email</p>
+                            <pre><code>$your_email="your_email@site.com";</code></pre>
+                            <p>You can also add more options if you want or change email template.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="compress">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Compress Images</h4>
+                            <hr>
+                            <p>To speed your site you may need to compress some of your images. For that run
+                                command:</p>
+                            <pre><code>$ gulp img-compress</code></pre>
+                            <p> images in demo folder will be compressed only. you must first create production version.
+                                you can change folder name in gulpfile.js if you want.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="plugins" class="p-b-40">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Plugins</h4>
+                            <hr>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    Twitter Bootstrap, its recommended to see visit bootstrap docs
+                                </li>
+                                <li class="list-group-item"><a
+                                        href="http://sachinchoolur.github.io/lightslider/index}">Light Slider</a>
+                                </li>
+                                <li class="list-group-item"><a th:href="@{/http://jackonthe.net/css3animateit/">CSS3
+                                    Animations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="credits" class="p-b-40">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Credits</h4>
+                            <hr>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    Twitter Bootstrap, its recommended to see visit bootstrap docs
+                                </li>
+                                <li class="list-group-item">Jquery – JS library</li>
+                                <li class="list-group-item"><a th:href="@{/icomoon.io">Generating Fonts Package</a></li>
+                                <li class="list-group-item"><a th:href="@{/www.flaticon.com">Flat Icon for various fonts</a>
+                                </li>
+                                <li class="list-group-item"><a th:href="@{/https://unsplash.com/">Unsplash Images</a></li>
+                                <li class="list-group-item">Gulp</li>
+                                <li class="list-group-item">NodeJS</li>
+                                <li class="list-group-item">
+                                    https://dribbble.com/shots/3497223--Free-PSD-Samsung-Galaxy-s8-Mockup
+                                </li>
+                                <li class="list-group-item">
+                                    https://drive.google.com/drive/folders/0ByYJdeOAU2QbU1hXcDdHc2xWWnc
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
+                <img src="img/basic/logo.png" alt="Knowledge">
+                <span class="circle"></span>
+            </a>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+
+                    <li><a th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>Knowledgebase</h6>
+                <ul class="footer-links">
+
+                    <li><a th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>About Us</h6>
+                <ul class="footer-links">
+
+                    <li><a th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-12 col-12 col-xl-3 responsive-phone">
+                <h6>Connect via Social</h6>
+                <ul class="social">
+                    <li class="facebook"><a href="#"><i class="icon icon-facebook"></i></a>
+                    </li>
+                    <li class="twitter"><a href="#"><i class="icon icon-twitter"></i></a>
+                    </li>
+                    <li class="gplus"><a href="#"><i class="icon icon-google-plus"></i></a>
+                    </li>
+                </ul>
+                <div class="copyrights">
+                    <p>&#xA9; 2018 Paper Knowledgebase Copyrights</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Login modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin">
+    <div class="modal-dialog width-400" role="document">
+        <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                            class="paper-nav-toggle active"><i></i></a>
+            <div class="modal-body no-p">
+                <div class="text-center p-40 p-b-0">
+                    <img src="img/dummy/u4.png" alt="">
+                    <h3>Welcome Back</h3>
+                    <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                        for you</p>
+                </div>
+                <div class="light p-40 b-t-b">
+                    <form action="dashboard2}">
+                        <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Email Address">
+                        </div>
+                        <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Password">
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                        <small class="forget-pass">Have you forgot your username or password ?</small>
+                    </form>
+                </div>
+                <div class="p-40"><a href="#" class="btn btn-lg btn-block btn-social facebook">
+                    <i class="icon-facebook"></i> Login with Facebook
+                </a>
+                    <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                        <i class="icon-twitter"></i> Login with Twitter
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SignUp modal -->
+<div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-labelledby="modalSignUp">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                            class="paper-nav-toggle active"><i></i></a>
+            <div class="modal-body no-p">
+                <div class="row">
+                    <div class="col-lg-5 grid">
+                        <div class="p-40">
+                            <h5 class="p-t-40">Sign Up Using Social Account</h5>
+                            <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                                for you</p> <a href="#" class="btn btn-lg btn-block btn-social facebook">
+                            <i class="icon-facebook"></i> Login with Facebook
+                        </a>
+                            <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                                <i class="icon-twitter"></i> Login with Twitter
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="light p-t-b-40">
+                            <div class="p-40">
+                                <h5 class="p-b-20">Create New User Account</h5>
+                                <form action="dashboard2.html ">
+                                    <div class="form-group has-icon"><i class="icon-user-circle"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Your Name">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Password">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-repeat"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Confirm Password">
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up Now">
+                                    <p class="forget-pass">A verification email wil be sent to you</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--End Page page_wrrapper -->
+<script src="js/search.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

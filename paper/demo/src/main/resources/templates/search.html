@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/basic/favicon.ico" type="image/x-icon">
+    <script src="js/jquery-3.6.0.js"></script>
+    <title>Paper</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/app.css">
+    <script>
+
+
+        var getParam = function (name) {
+            var search = document.location.search;
+            var pattern = new RegExp("[?&]" + name + "\=([^&]+)", "g");
+            var matcher = pattern.exec(search);
+            var items = null;
+            if (null != matcher) {
+                try {
+                    items = decodeURIComponent(decodeURIComponent(matcher[1]));
+                } catch (e) {
+                    try {
+                        items = decodeURIComponent(matcher[1]);
+                    } catch (e) {
+                        items = matcher[1];
+                    }
+                }
+            }
+            return items;
+        };
+    </script>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+    <div class="blog">
+        <!-- Header -->
+        <nav class="mainnav navbar navbar-default justify-content-between">
+            <div class="container relative">
+                <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+                   aria-expanded="false" aria-label="Toggle navigation">
+                    <i></i>
+                </a>
+                <a class="navbar-brand" th:href="@{/index}">
+                    <img class="d-inline-block align-top" alt="" src="img/basic/logo.png">
+                </a>
+                <div class="paper_menu">
+                    <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                        <ul class="dl-menu align-items-center">
+                            <li><a th:href="@{/index}">Home</a></li>
+                            <li><a th:href="@{/paper}">Recommend</a></li>
+
+                            <li th:if="${session.user}">
+                                <a th:href="@{/logout}">Logout</a>
+                            </li>
+
+                            <li th:if="${session.user==null}"><a th:href="@{/login}">
+                                Login
+                            </a>
+                            </li>
+                            <li th:if="${session.user==null}"><a th:href="@{/register}" class="btn btn-default nav-btn">Sign
+                                Up</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Login modal -->
+                </div>
+            </div>
+        </nav>
+        <div class="search-section">
+            <div class="masthead single-masthead">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-md-auto">
+                            <form id="search_form">
+                                <input style="display:none;">
+                                <input type="text" id="search_text" class="search-field"
+                                       placeholder="Search Something ... ">
+                                <button id="search_btn" type="button"><i class="icon icon-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a th:href="@{/index}">Home</a>
+                    </li>
+                    <li class="active">Paper</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main class="content-wrapper" th:fragment="searchFrame" id="searchFrame">
+            <div class="container">
+                <header class="section-heading p-b-40">
+                    <h1 class="text-left">Search Result</h1>
+                    <p class="text-left">Here are all the search-relation papers.</p>
+                </header>
+                <div class="row">    <!-- 搜索结果-->
+                    <div class="col-lg-3" th:each="paper:${searchList}">
+                        <article class="post"><span class="ico icon-document-text"></span>
+                            <h2><a th:href="@{/single(paperId=${paper.paperId})}">
+                                [[${#strings.abbreviate(paper.title,20)}]]</a></h2>
+                            <a th:href="@{/single(paperId=${paper.paperId})}">Read Article</a>
+                        </article>
+                    </div>
+                </div>
+                <input id="currentpage" th:value="${currentpage}" style="display:none;">
+                <input id="maxPage" th:value="${maxPage}" style="display:none;">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item"><a onclick="loadPrevious()" class="page-link">Previous</a>
+                        </li>
+                        <li th:each="page:${pageList}" th:class="${currentpage==page}?'active page-item':'page-item'"
+                            class=""><a th:onclick="'loadCurrent('+${page}+')'"  class="page-link">[[${page}]]</a>
+                        </li>
+                        <li class="page-item"><a onclick="loadNext()" class="page-link">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
+                    <img src="img/basic/logo.png" alt="Knowledge">
+                    <span class="circle"></span>
+                </a>
+                </div>
+                <div class="col-6  col-md-4 col-lg-2">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+
+                        <li th:if="${session.user==null}"><a th:href="@{/login}">
+                            Login
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6  col-md-4 col-lg-2">
+                    <h6>Knowledgebase</h6>
+                    <ul class="footer-links">
+                        <li th:if="${session.user==null}"><a th:href="@{/login}">
+                            Login
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6  col-md-4 col-lg-2">
+                    <h6>About Us</h6>
+                    <ul class="footer-links">
+
+                        <li th:if="${session.user==null}"><a th:href="@{/login}">
+                            Login
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-12 col-12 col-xl-3 responsive-phone">
+                    <h6>Connect via Social</h6>
+                    <ul class="social">
+                        <li class="facebook"><a href="#"><i class="icon icon-facebook"></i></a>
+                        </li>
+                        <li class="twitter"><a href="#"><i class="icon icon-twitter"></i></a>
+                        </li>
+                        <li class="gplus"><a href="#"><i class="icon icon-google-plus"></i></a>
+                        </li>
+                    </ul>
+                    <div class="copyrights">
+                        <p>&#xA9; 2018 Paper Knowledgebase Copyrights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!--End Page page_wrrapper -->
+<script>
+    var keyWords = getParam("search");
+    var Page = getParam("page");
+    if (null == keyWords) {
+        keyWords = '';
+    }
+    if (null == Page) {
+        Page = '1';
+    }
+    $('#searchFrame').load("search.do?keyword=" + keyWords + '&page=' + Page);
+
+
+    function loadPrevious() {
+        var currentpage = parseInt($("#currentpage").val());
+        var prePage = currentpage <=1 ? 1 : currentpage - 1;
+        var keyWords = getParam("search");
+        if (null == keyWords) {
+            keyWords = '';
+        }
+        $('#searchFrame').load("search.do?keyword=" + keyWords + '&page=' + prePage);
+    }
+
+
+    function loadNext() {
+        var currentpage = parseInt($("#currentpage").val());
+        var maxPage = parseInt($("#maxPage").val());
+        var nextPage = currentpage >= maxPage ? maxPage : currentpage + 1;
+        var keyWords = getParam("search");
+        if (null == keyWords) {
+            keyWords = '';
+        }
+        $('#searchFrame').load("search.do?keyword=" + keyWords + '&page=' + nextPage);
+    }
+
+    function loadCurrent(id) {
+        var keyWords = getParam("search");
+        if (null == keyWords) {
+            keyWords = '';
+        }
+        $('#searchFrame').load("search.do?keyword=" + keyWords + '&page=' + id);
+
+    }
+
+</script>
+
+
+<script src="js/search.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

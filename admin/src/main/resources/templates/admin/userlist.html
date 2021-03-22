@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>论文推荐网站管理端</title>
+    <meta name="description"
+          content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="js/jPlayer/jplayer.flat.css" type="text/css"/>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="css/app.css" type="text/css"/>
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+    <![endif]-->
+</head>
+
+<body class="">
+<section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+        <div class="navbar-header aside bg-info nav-xs">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="icon-list"></i>
+            </a>
+            <a th:href="@{/admin}" class="navbar-brand text-lt">
+                <i class="icon-earphones"></i>
+                <img src="images/logo.png" alt="." class="hide">
+                <span class="hidden-nav-xs m-l-sm">Paper</span>
+            </a>
+            <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                <i class="icon-settings"></i>
+            </a>
+        </div>
+        <ul class="nav navbar-nav hidden-xs">
+            <li>
+                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                    <i class="fa fa-indent text"></i>
+                    <i class="fa fa-dedent text-active"></i>
+                </a>
+            </li>
+        </ul>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <!-- .aside -->
+            <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                <section class="vbox">
+                    <section class="w-f-md scrollable">
+                        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0"
+                             data-size="10px" data-railOpacity="0.2">
+
+
+                            <!-- nav -->
+                            <nav class="nav-primary hidden-xs">
+
+                                <ul class="nav" data-ride="collapse">
+                                    <li>
+                                        <a href="#" class="auto">
+                        <span class="pull-right text-muted">
+                          <i class="fa fa-angle-left text"></i>
+                          <i class="fa fa-angle-down text-active"></i>
+                        </span>
+                                            <i class="icon-chemistry icon">
+                                            </i>
+                                            <span>管理中心</span>
+                                        </a>
+                                        <ul class="nav dk text-sm">
+                                            <li>
+                                                <a th:href="@{/userlist}" class="auto">
+                                                    <i class="fa fa-angle-right text-xs"></i>
+
+                                                    <span>用户管理</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/songlist}" class="auto">
+                                                    <i class="fa fa-angle-right text-xs"></i>
+
+                                                    <span>论文管理</span>
+                                                </a>
+                                            </li>
+
+
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <!-- / nav -->
+
+                        </div>
+                    </section>
+
+                    <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                    </footer>
+                </section>
+            </aside>
+            <!-- /.aside -->
+            <!-- /.aside -->
+            <section id="content">
+                <section class="vbox">
+                    <section class="panel panel-default">
+                        <header class="panel-heading">
+                            用户列表
+                        </header>
+                        <div class="row wrapper">
+                            <div class="col-sm-5 m-b-xs">
+                                <a th:href="@{/adduser}" class="btn btn-sm btn-warning" role="button">添加用户</a>
+                            </div>
+                            <div class="col-sm-4 m-b-xs">
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" id="searchname" class="input-sm form-control"
+                                           placeholder="Search">
+                                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" onclick="SearchUser()" type="button">Go!</button>
+                      </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped b-t b-light">
+                                <thead>
+                                <tr>
+                                    <th style="width:20px;">ID</th>
+                                    <th class="th-sortable" data-toggle="class">名·前
+                                    </th>
+                                    <th class="th-sortable" data-toggle="class">名·后
+                                    </th>
+                                    <th>密码</th>
+                                    <th>邮箱</th>
+                                    <th>激活</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="user:${userlist}">
+                                    <td th:text="${user.userId}"></td>
+                                    <td th:text="${user.firstName}"></td>
+                                    <td th:text="${user.lastName}"></td>
+                                    <td>******</td>
+                                    <td th:text="${user.email}"></td>
+                                    <td th:text="${user.isActived}==1?'是':'否'"></td>
+                                    <td>
+                                        <a th:href="@{/updateuser(id=${user.userId})}" class="btn btn-primary" role="button">修改</a>
+                                        <a th:href="@{/deleteuser(username=${user.email})}" class="btn btn-danger"
+                                           role="button">删除</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="panel-footer">
+                            <div class="row">
+                                <div class="col-sm-4 hidden-xs">
+                                    <select class="input-sm form-control input-s-sm inline v-middle">
+                                        <option value="0">Bulk action</option>
+                                        <option value="1">Delete selected</option>
+                                        <option value="2">Bulk edit</option>
+                                        <option value="3">Export</option>
+                                    </select>
+                                    <button class="btn btn-sm btn-default">Apply</button>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+                                </div>
+                                <div class="col-sm-4 text-right text-center-xs">
+                                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                                        <li><a th:href="@{/userlist(page=${currentpage}-1)}"><i
+                                                class="fa fa-chevron-left"></i></a></li>
+                                        <li th:each="page:${pagelist}" th:class="${currentpage==page}?'active':''"><a
+                                                th:href="@{/userlist(page=${page})}">[[${page}]]</a></li>
+                                        <li><a th:href="@{/userlist(page=${currentpage}+1)}"><i
+                                                class="fa fa-chevron-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </footer>
+                    </section>
+                </section>
+                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open"
+                   data-target="#nav,html"></a>
+            </section>
+        </section>
+    </section>
+</section>
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.js"></script>
+<!-- App -->
+<script src="js/app.js"></script>
+<script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/app.plugin.js"></script>
+<script type="text/javascript" src="js/jPlayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="js/jPlayer/add-on/jplayer.playlist.min.js"></script>
+<script type="text/javascript" src="js/jPlayer/demo.js"></script>
+<script>
+    function SearchUser() {
+        var searchname = $('#searchname').val();
+        window.location.href = "/userlist?search=" + searchname;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+     <link rel="icon" href="img/basic/favicon.ico" type="image/x-icon">
+    <script src="js/jquery-3.6.0.js"></script>
+    <title>Paper</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+<main class="template-genre">
+    <!-- Search Section & Nav -->
+    <div class="search-section home-search">
+        <!-- Header -->
+<nav class="mainnav navbar navbar-default justify-content-between">
+    <div class="container relative">
+        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+           aria-expanded="false" aria-label="Toggle navigation">
+            <i></i>
+        </a>
+        <a class="navbar-brand" th:href="@{/index}">
+            <img class="d-inline-block align-top" alt="" src="img/basic/logo.png">
+        </a>
+        <div class="paper_menu">
+            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+    <ul class="dl-menu align-items-center">
+        <li><a th:href="@{/index}">Home</a></li>
+                        <li><a th:href="@{/paper}">Recommend</a></li>
+        
+        
+        <li><a th:href="@{/login}">
+            Login
+        </a>
+        </li>
+        <li><a th:href="@{/register}" class="btn btn-default nav-btn">Sign
+            Up</a>
+        </li>
+    </ul>
+</div>
+<!-- Login modal -->
+        </div>
+    </div>
+</nav>
+        <div class="masthead text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-md-auto">
+                        <h1>Hi, how can we help you?</h1>
+                        <form>
+                            <input type="text" class="search-field" placeholder="Search Something ... ">
+                            <button type="submit"><i class="icon icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Genre -->
+    <section id="genre" class="genre">
+        <div class="container">
+            <header class="text-center">
+                <h2 class="section-title">Browse Help Topics</h2>
+                <div class="section-subtitle">When you are stuck in something don&#x2019;t waste your time just let
+                    us know we are here to help you
+                </div>
+            </header>
+            <div class="row p-t-b-80">
+                <div class="text-center col-xl-4">
+                    <div class="media-body"><span class="icon"><img src="img/icon/icon1.png" alt=""></span>
+                        <h3 class="p-t-b-20">Help &amp; Documentation</h3>
+                        <p>Unlike other Frameworks which try to cover everything, It has been built
+                            specifically for wordpress</p>
+                    </div>
+                </div>
+                <div class="text-center col-xl-4">
+                    <div class="media-body"><span class="icon"><img src="img/icon/icon2.png" alt=""></span>
+                        <h3 class="p-t-b-20">Developer Resources</h3>
+                        <p>An incredibly codex has been created for you to use as reference when
+                            developing extensions</p>
+                    </div>
+                </div>
+                <div class="text-center col-xl-4">
+                    <div class="media-body"><span class="icon"><img src="img/icon/icon3.png" alt=""></span>
+                        <h3 class="p-t-b-20">Community Support</h3>
+                        <p>The source code is available on GitHub, you can grab it and twist it to
+                            your heart&#x2019;s content</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row  justify-content-md-center">
+                <div class="text-center col-xl-4">
+                    <div class="media-body"><span class="icon"><img src="img/icon/icon-files.png" alt=""></span>
+                        <h3 class="p-t-b-20">Developer Resources</h3>
+                        <p>An incredibly codex has been created for you to use as reference when
+                            developing extensions</p>
+                    </div>
+                </div>
+                <div class="text-center col-xl-4">
+                    <div class="media-body"><span class="icon"><img src="img/icon/icon-rocket.png" alt=""></span>
+                        <h3 class="p-t-b-20">Community Support</h3>
+                        <p>The source code is available on GitHub, you can grab it and twist it to
+                            your heart&#x2019;s content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call To Action -->
+    <section class="section">
+        <div class="container">
+            <div class="row call-to-action  paper-block">
+                <div class="col-xl-1"><span class="icon icon-envelope-line"></span>
+                </div>
+                <div class="col-xl-9">
+                    <h3>Contact Us</h3>
+                    <div>If you have question which is beyond this knowledgebase Kindly contact
+                        us</div>
+                </div>
+                <div class="col-xl-2"><a href="#" class="btn btn-primary btn-action mt-3">Write to Us Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-2 col-xl-3 col-12 responsive-phone"><a href="#" class="brand">
+                <img src="img/basic/logo.png" alt="Knowledge">
+                <span class="circle"></span>
+            </a>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+          
+                    <li><a th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>Knowledgebase</h6>
+                <ul class="footer-links">
+          
+                    <li><a th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6  col-md-4 col-lg-2">
+                <h6>About Us</h6>
+                <ul class="footer-links">
+          
+                    <li><a th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-12 col-12 col-xl-3 responsive-phone">
+                <h6>Connect via Social</h6>
+                <ul class="social">
+                    <li class="facebook"><a href="#"><i class="icon icon-facebook"></i></a>
+                    </li>
+                    <li class="twitter"><a href="#"><i class="icon icon-twitter"></i></a>
+                    </li>
+                    <li class="gplus"><a href="#"><i class="icon icon-google-plus"></i></a>
+                    </li>
+                </ul>
+                <div class="copyrights">
+                    <p>&#xA9; 2018 Paper Knowledgebase Copyrights</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Login modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin">
+    <div class="modal-dialog width-400" role="document">
+        <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                            class="paper-nav-toggle active"><i></i></a>
+            <div class="modal-body no-p">
+                <div class="text-center p-40 p-b-0">
+                    <img src="img/dummy/u4.png" alt="">
+                    <h3>Welcome Back</h3>
+                    <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                        for you</p>
+                </div>
+                <div class="light p-40 b-t-b">
+                    <form action="dashboard2}">
+                        <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Email Address">
+                        </div>
+                        <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                            <input type="text" class="form-control form-control-lg"
+                                   placeholder="Password">
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                        <small class="forget-pass">Have you forgot your username or password ?</small>
+                    </form>
+                </div>
+                <div class="p-40"><a href="#" class="btn btn-lg btn-block btn-social facebook">
+                    <i class="icon-facebook"></i> Login with Facebook
+                </a>
+                    <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                        <i class="icon-twitter"></i> Login with Twitter
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SignUp modal -->
+<div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-labelledby="modalSignUp">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content no-r "><a href="#" data-dismiss="modal" aria-label="Close"
+                                            class="paper-nav-toggle active"><i></i></a>
+            <div class="modal-body no-p">
+                <div class="row">
+                    <div class="col-lg-5 grid">
+                        <div class="p-40">
+                            <h5 class="p-t-40">Sign Up Using Social Account</h5>
+                            <p class="p-t-b-20">Hey Soldier welcome back signin now there is lot of new stuff waiting
+                                for you</p> <a href="#" class="btn btn-lg btn-block btn-social facebook">
+                            <i class="icon-facebook"></i> Login with Facebook
+                        </a>
+                            <a href="#" class="btn btn-lg btn-block btn-social twitter">
+
+                                <i class="icon-twitter"></i> Login with Twitter
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="light p-t-b-40">
+                            <div class="p-40">
+                                <h5 class="p-b-20">Create New User Account</h5>
+                                <form action="dashboard2.html ">
+                                    <div class="form-group has-icon"><i class="icon-user-circle"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Your Name">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-envelope-o"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-user-secret"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Password">
+                                    </div>
+                                    <div class="form-group has-icon"><i class="icon-repeat"></i>
+                                        <input type="text" class="form-control form-control-lg"
+                                               placeholder="Confirm Password">
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up Now">
+                                    <p class="forget-pass">A verification email wil be sent to you</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--End Page page_wrrapper -->
+<script src="js/search.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
