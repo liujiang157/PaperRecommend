@@ -6,6 +6,10 @@
 - 账号激活 springboot-mail
 - 浏览记录下载记录防恶刷 Redis
 - 论文检索 ElasticSearch
+- 页面映射thymeleaf
+- 数据交互mybatis
+- 跨模块请求 RestTemplate
+- 文件存储 --七牛云SDK
 - 论文展示 Pdf.js
 - 前后端交互 Ajax
 
